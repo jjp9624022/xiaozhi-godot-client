@@ -26,7 +26,7 @@ extends MeshInstance3D
 
 @onready var lip_sync= $LipSync
 @onready var bus = AudioServer.get_bus_index("Speech")
-@onready var tween = create_tween()
+#@onready var tween = create_tween()
 @onready var timer=$Timer
 @onready var anim_player=$"../../AnimationPlayer"
 func _ready():

@@ -5,7 +5,9 @@ extends AnimationPlayer
 	"relaxed":"relaxed",
 	"angry":"angry",
 	"happy":"happy",
-	"surprised":"surprised"
+	"surprised":"surprised",
+	"thinking":"mix/thinking",
+	"laughing":"mix/laughing"
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,5 +29,6 @@ func _on_recorder_is_listening(speek_status) -> void:
 	else:
 		$eyeAnimation.active=true
 		$AnimationTree["parameters/BlendTree/Blend2/blend_amount"]=0.5
-func _on_motion_res(motion_name):
-	self.play(motion_dic[motion_name])
+func _on_emotion_res(motion_name):
+	if motion_dic[motion_name]:
+		self.play(motion_dic[motion_name])

@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 var web
 #signal speek_info
 
