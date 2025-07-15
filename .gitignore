@@ -1,7 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 export
-addons/**/~*.dll
+addons/**/*.dll
 .sconsign.dblite
 *.obj
 
@@ -12,5 +12,5 @@ addons/**/~*.dll
 *.import
 *.apk
 *.uid
-.vscode
+.vscode/
 android/
