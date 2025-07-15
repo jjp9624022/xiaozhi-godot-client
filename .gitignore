@@ -1,0 +1,16 @@
+# Godot 4+ specific ignores
+.godot/
+export
+addons/**/~*.dll
+.sconsign.dblite
+*.obj
+
+# Visual-studio related
+.vs
+*.sln
+*.vcxproj*
+*.import
+*.apk
+*.uid
+.vscode
+android/

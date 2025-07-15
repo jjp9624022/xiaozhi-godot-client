@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmq6b6763g1o3"]
+
+[ext_resource type="PackedScene" uid="uid://c53ywbl2oiduu" path="res://vrm.tscn" id="1_mgtde"]
+[ext_resource type="Script" uid="uid://bug7qy7lxu7sk" path="res://button.gd" id="2_spy8m"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_81c5r"]
+
+[sub_resource type="Compositor" id="Compositor_qew7x"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="test2" parent="." instance=ExtResource("1_mgtde")]
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 652.0
+offset_bottom = 786.0
+
+[node name="BoxContainer" type="BoxContainer" parent="Container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -66.0
+offset_right = 36.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+vertical = true
+
+[node name="Button" type="Button" parent="Container/BoxContainer"]
+layout_mode = 2
+action_mode = 0
+text = "按住聊天"
+script = ExtResource("2_spy8m")
+
+[node name="Button2" type="Button" parent="Container/BoxContainer"]
+layout_mode = 2
+text = "动作实验"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.346, 0.741749)
+attributes = SubResource("CameraAttributesPractical_81c5r")
+compositor = SubResource("Compositor_qew7x")
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5261, 3.2419)

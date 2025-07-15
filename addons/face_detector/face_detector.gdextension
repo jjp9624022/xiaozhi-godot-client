@@ -1,0 +1,39 @@
+[configuration]
+
+entry_symbol = "face_detector_library_init"
+compatibility_minimum = 4.2
+
+[libraries]
+
+windows.debug.x86_64 = "bin/windows/libface_detector.windows.debug.x86_64.dll"
+windows.release.x86_64 = "bin/windows/libface_detector.windows.release.x86_64.dll"
+linux.debug.x86_64 = "face_detector.so"
+linux.release.x86_64 = "face_detector.so"
+macos.debug = "face_detector.dylib"
+macos.release = "face_detector.dylib"
+android.debug.arm64 = "bin/android/arm64-v8a/libface_detector.debug.so"
+android.release.arm64 = "bin/android/arm64-v8a/libface_detector.release.so"
+[dependencies]
+
+android.debug.arm64={
+"bin/android/arm64-v8a/libncnn.so":"",
+"bin/android/arm64-v8a/libomp.so":""
+
+
+}
+android.release.arm64={
+"bin/android/arm64-v8a/libncnn.so":"",
+"bin/android/arm64-v8a/libomp.so":""
+
+
+
+}
+windows.debug.x86_64={
+    
+    "bin/windows/ncnn.dll":"",
+    "bin/windows/vulkan-1.dll":"",
+    "bin/windows/opencv_core2.dll":"",
+    "bin/windows/opencv_imgproc2.dll":"",
+    "bin/windows/opencv_highgui2.dll":"",
+
+}

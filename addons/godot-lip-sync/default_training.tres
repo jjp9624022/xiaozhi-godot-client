@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LipSyncTraining" load_steps=2 format=3 uid="uid://dyirnx3p5g0s3"]
+
+[ext_resource type="Script" uid="uid://df3jw1ouo4in4" path="res://addons/godot-lip-sync/lip_sync_training.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+training = {}
+weights = {}

@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdfe2fhlnoq2x"]
+
+[ext_resource type="Script" uid="uid://bmdkmag5emllh" path="res://control.gd" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://d2okthktfxqr1" path="res://script/label.gd" id="2_62e2m"]
+[ext_resource type="Script" uid="uid://mc8g6ocisq1a" path="res://script/tts_display.gd" id="2_qtu10"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_62e2m"]
+font_size = 26
+
+[node name="Container" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -326.0
+offset_right = 326.0
+offset_bottom = 786.0
+grow_horizontal = 2
+script = ExtResource("1_0fbet")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -66.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+vertical = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer" groups=["tts"]]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+tab_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_qtu10")
+
+[node name="Label" type="Label" parent="BoxContainer" groups=["is_talking"]]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_62e2m")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_62e2m")
+
+[node name="SendAudioButton" type="Button" parent="BoxContainer"]
+layout_mode = 2
+action_mode = 0
+text = "按住聊天"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="CodeEdit" type="CodeEdit" parent="BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+
+[node name="sendTextButton" type="Button" parent="BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "发送"
+
+[connection signal="button_down" from="BoxContainer/SendAudioButton" to="." method="_on_speek_button_down"]
+[connection signal="button_up" from="BoxContainer/SendAudioButton" to="." method="_on_speek_button_up"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer/sendTextButton" to="." method="_on_send_text_button_pressed"]

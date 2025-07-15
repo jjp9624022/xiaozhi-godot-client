@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqwc6xki732x6"]
+
+[ext_resource type="Script" uid="uid://b3kqphgahdby3" path="res://face_reg.gd" id="1_uad11"]
+[ext_resource type="Script" uid="uid://bl1q7c0hirx46" path="res://script/webdownloader.gd" id="2_ildyk"]
+
+[node name="face_reg" type="Node2D"]
+script = ExtResource("1_uad11")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 49.0
+offset_top = 36.0
+offset_right = 153.0
+offset_bottom = 67.0
+grow_horizontal = 2
+text = "识别人脸测试"
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+offset_left = 489.0
+offset_top = 31.0
+offset_right = 561.0
+offset_bottom = 62.0
+text = "识别测试"
+
+[node name="webdownloader" type="Node" parent="."]
+script = ExtResource("2_ildyk")
+
+[node name="Timer" type="Timer" parent="webdownloader"]
+
+[connection signal="ready" from="." to="webdownloader" method="_on_face_reg_ready"]
+[connection signal="pressed" from="Button" to="." method="_on_detect_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_recognize_button_pressed"]
+[connection signal="model_status" from="webdownloader" to="." method="_on_webdownloader_model_status"]
+[connection signal="timeout" from="webdownloader/Timer" to="webdownloader" method="load_model"]

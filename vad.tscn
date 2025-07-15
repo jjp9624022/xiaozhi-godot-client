@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxn8qey78w8h2"]
+
+[ext_resource type="Script" uid="uid://bx4ynb17onavq" path="res://script/vad.gd" id="1_vfxew"]
+
+[node name="vad" type="Node"]
+script = ExtResource("1_vfxew")
+threshold = 0.1
+
+[node name="vad_detect_time" type="Timer" parent="."]
+
+[connection signal="timeout" from="vad_detect_time" to="." method="_on_vad_detect_time_timeout"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://df30rkyj7xpf1"]
+
+[ext_resource type="Script" uid="uid://ds36h3jydhc7y" path="res://script/android_audio_test.gd" id="1_0bmep"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_7chh5"]
+
+[node name="android_audio_test" type="Node"]
+script = ExtResource("1_0bmep")
+
+[node name="out" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_7chh5")
+autoplay = true

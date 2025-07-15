@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://byhvx4mmd88m2"]
+
+[ext_resource type="Script" uid="uid://b0q0e52gxvksk" path="res://main.gd" id="1_plcp0"]
+[ext_resource type="PackedScene" uid="uid://c53ywbl2oiduu" path="res://back/vrm.tscn" id="3_colc4"]
+[ext_resource type="PackedScene" uid="uid://cdfe2fhlnoq2x" path="res://control.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dqwc6xki732x6" path="res://face_reg.tscn" id="4_1bvp3"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_m4uk2"]
+
+[sub_resource type="Sky" id="Sky_w4xa3"]
+sky_material = SubResource("PanoramaSkyMaterial_m4uk2")
+
+[sub_resource type="Environment" id="Environment_pctov"]
+background_color = Color(0.212658, 0.121916, 0.0821346, 1)
+background_energy_multiplier = 1.75
+sky = SubResource("Sky_w4xa3")
+ambient_light_color = Color(0.840269, 0.844587, 0.841302, 1)
+ambient_light_energy = 1.77
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_g7rm2"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ic2es"]
+
+[sub_resource type="Compositor" id="Compositor_tpg3o"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_plcp0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pctov")
+camera_attributes = SubResource("CameraAttributesPhysical_g7rm2")
+
+[node name="test2" parent="." instance=ExtResource("3_colc4")]
+
+[node name="text_manage" parent="." instance=ExtResource("3_h2yge")]
+anchors_preset = 12
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.551, 0.742)
+attributes = SubResource("CameraAttributesPractical_ic2es")
+compositor = SubResource("Compositor_tpg3o")
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5261, 3.2419)
+
+[node name="face_reg" parent="." instance=ExtResource("4_1bvp3")]
