@@ -54,6 +54,10 @@ layout_mode = 2
 action_mode = 0
 text = "按住聊天"
 
+[node name="FaceCheckButton" type="CheckButton" parent="BoxContainer"]
+layout_mode = 2
+text = "启用人脸识别"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
@@ -70,4 +74,6 @@ text = "发送"
 
 [connection signal="button_down" from="BoxContainer/SendAudioButton" to="." method="_on_speek_button_down"]
 [connection signal="button_up" from="BoxContainer/SendAudioButton" to="." method="_on_speek_button_up"]
+[connection signal="button_down" from="BoxContainer/FaceCheckButton" to="." method="_on_face_check_button_button_down"]
+[connection signal="button_up" from="BoxContainer/FaceCheckButton" to="." method="_on_face_check_button_button_up"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer/sendTextButton" to="." method="_on_send_text_button_pressed"]

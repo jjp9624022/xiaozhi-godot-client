@@ -32,8 +32,7 @@ windows.debug.x86_64={
     
     "bin/windows/ncnn.dll":"",
     "bin/windows/vulkan-1.dll":"",
-    "bin/windows/opencv_core2.dll":"",
-    "bin/windows/opencv_imgproc2.dll":"",
-    "bin/windows/opencv_highgui2.dll":"",
+    "bin/windows/opencv_world455.dll":"",
+
 
 }

@@ -57,8 +57,7 @@ func _on_emotion_res(motion_name):
 	if motion_dic.get(motion_name):
 		$AnimationTree["parameters/BlendTree/emotion/playback"].travel("Start")
 		$AnimationTree.set("parameters/BlendTree/emotion/conditions/%s"%motion_dic[motion_name],true)
-		if $emotion_timer.timeout:
-			$emotion_timer.start(1)
+		$emotion_timer.start(1)
 
 
 func _on_emotion_timer_timeout() -> void:

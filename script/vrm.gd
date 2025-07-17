@@ -45,6 +45,8 @@ func send_text(text):
 
 func start_send_audio() -> void:
 
+	
+
 	recorder.start_capture()
 	pass # Replace with function body.
 

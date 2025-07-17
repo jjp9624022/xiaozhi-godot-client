@@ -30,15 +30,7 @@ func _ready():
 	_ws_client.connection_closed.connect(_on_closed)
 	_ws_client.data_received.connect(_on_data)
 	_ws_client.connect_to_url(SERVER_URL)
-	#AudioServer.input_device=AudioServer.get_input_device_list()[3]
-	print("输入设备",AudioServer.get_input_device_list())
-	print(AudioServer.input_device)
-	print("输出设备", AudioServer.get_output_device_list())
-	#if OS.get_name() == "Android":
-		#var stream:AudioStreamGenerator=$AudioStreamPlayer2.stream
-		#stream.mix_rate_mode=AudioStreamGenerator.MIX_RATE_CUSTOM
-		#stream.mix_rate=16000
-		#print(stream.mix_rate)
+
 
 func _process(_delta):
 
@@ -59,22 +51,12 @@ func _process_audio():
 
 	if available_frames<= 0:
 		print("audio too short")
-		return
-	
-	# 计算所需帧数：采样率16000 * 20ms = 320采样点/帧
-	
+		return		
 	while available_frames >= target_frames:
-		#var pcm_data = _audio_effect.get_buffer(available_frames)
 		var data=capturer.get_buffer(target_frames)
-		#if OS.get_name() == "Android":
-			#for i in range(data.size()):
-				#data[1]*=10
-
 		var opus_frame = _encoder.encode(data)
 		print(opus_frame.size())
-
-		_ws_client.send(opus_frame)
-		
+		_ws_client.send(opus_frame)		
 		available_frames -= target_frames
 
 func send_text(text):
@@ -129,6 +111,8 @@ func send_handshake():
 	_send_json(msg)
 
 func start_capture():
+	if $Mic.playing==false:
+		$Mic.playing=true
 	capturer.clear_buffer()
 	_is_capturing = true
 	_send_json({
@@ -158,6 +142,7 @@ func _handle_server_message(msg):
 	match msg.get("type"):
 		"hello":
 			print("服务器已经建立链接")
+			_is_capturing = true
 		"llm":
 			emotion_state.emit(msg.get("emotion"))
 			get_tree().call_group("tts", "_receive_data", msg.get("text"))	#start_capture()
@@ -177,10 +162,17 @@ func _on_timer_for_web_timeout() -> void:
 
 func _on_mic_finished() -> void:
 	print("意外中止，重新播放")
+	#$Mic.playing=true
+	$Mic.playing=false
+	var time=Timer.new()
+	time.timeout.connect(fuckMic)
+	add_child(time)
+	time.start(2)
+	pass # Replace with function body.
+func fuckMic():
+	print("mic重新启用")
 	$Mic.playing=true
 	$Mic.play()
-	pass # Replace with function body.
-
 
 func _on_vad_is_talking(state) -> void:
 	if state and _is_capturing==false:
