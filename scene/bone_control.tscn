@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnlcw6if44nvy"]
+
+[ext_resource type="Script" uid="uid://c1jw4uu7xccdr" path="res://pose/bone_control.gd" id="1_an8hi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5wwrn"]
+radius = 0.07
+
+[sub_resource type="SphereMesh" id="SphereMesh_m7mtf"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_5wwrn"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.450086, 0.732715, 0.999999, 0.2)
+disable_receive_shadows = true
+
+[node name="GodotIK" type="GodotIK" node_paths=PackedStringArray("camera_3d")]
+iteration_count = 2
+influence = 0.731
+script = ExtResource("1_an8hi")
+camera_3d = NodePath("")
+bone_id = 82
+
+[node name="rightHand" type="GodotIKEffector" parent="."]
+bone_name = "RightHand"
+bone_idx = 82
+chain_length = 3
+transform_mode = 1
+transform = Transform3D(1, 0, 0, 0, -0.155021, -0.987911, 0, 0.987911, -0.155021, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="rightHand"]
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rightHand/Area3D"]
+shape = SubResource("SphereShape3D_5wwrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rightHand/Area3D"]
+mesh = SubResource("SphereMesh_m7mtf")
+surface_material_override/0 = SubResource("ORMMaterial3D_5wwrn")
+
+[connection signal="input_event" from="rightHand/Area3D" to="rightHand" method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="rightHand/Area3D" to="rightHand" method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="rightHand/Area3D" to="rightHand" method="_on_area_3d_mouse_exited"]

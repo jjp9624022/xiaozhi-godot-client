@@ -1,4 +1,3 @@
-@tool
 extends Node
 # 配置常量
 # 配置常量
@@ -137,7 +136,7 @@ var config = {
 	"up_vector": Vector3.UP, # 上轴方向
 	"forward_vector": Vector3.FORWARD # 前轴方向
 }
-
+@export var player:AnimationPlayer
 @onready var human= SkeletonProfileHumanoid.new()
 
 
@@ -202,7 +201,7 @@ func _ready() -> void:
 	var hvb = load_text_file("res://animation/pray.bvh")
 	var animation: Animation = create_animation_from_bvh(hvb, config)
 	var animation_name = "test"
-	var player = $"../../AnimationPlayer2"
+	
 	var animationLib = player.get_animation_library("")
 	if animationLib.has_animation(animation_name):
 		var change_animation = animationLib.get_animation(animation_name)
@@ -447,7 +446,7 @@ func parse_motion(root: String, bone_names: Array, bone_index_map: Dictionary,
 					
 
 				#var rotation_new=rot*rotation
-				animation.rotation_track_insert_key(track_index, step * timestep, rotation)
+					animation.rotation_track_insert_key(track_index, step * timestep, rotation)
 		
 		step += 1
 	

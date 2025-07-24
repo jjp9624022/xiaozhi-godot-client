@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HumanState" load_steps=2 format=3 uid="uid://n7ukv2v1l7yl"]
+
+[ext_resource type="Script" uid="uid://beofvtt5vx8f0" path="res://utils/human_state.gd" id="1_3le2i"]
+
+[resource]
+script = ExtResource("1_3le2i")
+state = 0
+metadata/_custom_type_script = "uid://beofvtt5vx8f0"

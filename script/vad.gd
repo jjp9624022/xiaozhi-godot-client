@@ -1,10 +1,10 @@
 extends Node
 var capture:AudioEffectCapture
+@export var human_status:HumanState
 
 
 @export var frames_total=100
-@export var record_vol=100
-@export var threshold=0.5
+@export_range(0.01,0.5) var threshold=0.5
 var is_voice_detected: bool = false
 signal is_talking
 
@@ -18,7 +18,7 @@ func _process(delta):
 func calculate_rms(buffer):
 	var sum = 0.0
 	for s in buffer:
-		sum += s.x * s.x
+		sum += abs(s.x * s.x)
 	return sqrt(sum / buffer.size())	
 
 func is_speeking(buffer:PackedVector2Array):
@@ -34,10 +34,10 @@ func is_speeking(buffer:PackedVector2Array):
 		is_voice_detected = true
 		
 		$vad_detect_time.start(5)
-		is_talking.emit(is_voice_detected)
+		human_status.set_status(HumanState.status.LESTENING)
 
 func _on_vad_detect_time_timeout() -> void:
 	is_voice_detected=false
-	is_talking.emit(is_voice_detected)
+	human_status.set_status(HumanState.status.IDLE)
 	
 	pass # Replace with function body.

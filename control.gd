@@ -1,8 +1,12 @@
 extends Control
-@onready var charactor=$"../test2"
+@onready var code_edit: CodeEdit = $BoxContainer/HBoxContainer/CodeEdit
+
 @onready var text_editor=$BoxContainer/HBoxContainer/CodeEdit
+@export var human_status:HumanState
 func _on_send_text_button_pressed() :
-	charactor.send_text(text_editor.text)
+	human_status.set_send_text(code_edit.text)
+	human_status.set_status(HumanState.status.LESTEN_TEXT)
+	code_edit.text=""
 	pass # Replace with function body.
 
 
@@ -17,11 +21,11 @@ func _on_test_2_tts(msg) -> void:
 
 
 func _on_speek_button_down() -> void:
-	charactor.start_send_audio()
+	human_status.set_status(HumanState.status.LESTENING)
 	pass # Replace with function body.
 
 func _on_speek_button_up() -> void:
-	charactor.stop_send_audio()
+	human_status.set_status(HumanState.status.IDLE)
 	pass # Replace with function body.
 
 func _on_face_check_button_button_down() -> void:

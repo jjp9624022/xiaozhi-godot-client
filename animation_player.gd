@@ -55,11 +55,11 @@ func _on_recorder_is_listening(speek_status) -> void:
 		$AnimationTree["parameters/BlendTree/Blend2/blend_amount"]=0.5
 func _on_emotion_res(motion_name):
 	if motion_dic.get(motion_name):
-		$AnimationTree["parameters/BlendTree/emotion/playback"].travel("Start")
-		$AnimationTree.set("parameters/BlendTree/emotion/conditions/%s"%motion_dic[motion_name],true)
-		$emotion_timer.start(1)
+		$AnimationTree["parameters/BlendTree/emotion/playback"].travel(motion_dic[motion_name])
+		#$AnimationTree.set("parameters/BlendTree/emotion/conditions/%s"%motion_dic[motion_name],true)
+		$emotion_timer.start(3)
 
 
 func _on_emotion_timer_timeout() -> void:
-	$AnimationTree["parameters/BlendTree/emotion/playback"].travel("blink")
+	$AnimationTree["parameters/BlendTree/emotion/playback"].travel("RESET")
 	pass # Replace with function body.

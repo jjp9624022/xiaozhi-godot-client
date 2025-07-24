@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh1qvruv8aguf"]
+
+[ext_resource type="Script" uid="uid://c131m5hcguptv" path="res://recorder2.gd" id="1_ysjw6"]
+[ext_resource type="Script" uid="uid://c00pomayh0p85" path="res://addons/nodewebsockets/websocket_client.gd" id="2_kc08h"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_ul4jo"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_lt7kc"]
+mix_rate = 48000.0
+buffer_length = 0.2
+
+[node name="recorder" type="Node"]
+script = ExtResource("1_ysjw6")
+power = 100
+
+[node name="Mic" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_ul4jo")
+mix_target = 2
+max_polyphony = 2
+bus = &"Record"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_lt7kc")
+autoplay = true
+max_polyphony = 2
+bus = &"Speech"
+playback_type = 2
+
+[node name="WebSocketClient" type="Node" parent="."]
+script = ExtResource("2_kc08h")
+url_server = "ws://192.168.1.1:8000/xiaozhi/v1"
+protocols = PackedStringArray()
+extra_headers = PackedStringArray("Authorization:test_token", "Protocol-Version: 1", "Device-Id: D8-5E-D3-77-5A-EB", "Client-Id:D8-5E-D3-77-5A-EB")
+trusted_unsafe = true
+metadata/_custom_type_script = "uid://c00pomayh0p85"
+
+[node name="Timer_for_web" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="finished" from="Mic" to="." method="_on_mic_finished"]
+[connection signal="ready" from="Mic" to="." method="_on_mic_finished"]
+[connection signal="timeout" from="Timer_for_web" to="." method="_on_timer_for_web_timeout"]

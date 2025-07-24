@@ -35,7 +35,7 @@ var current_state = "neutral"
 var target_state = "neutral"
 var last_state_change_time = 0.0
 
-@onready var lip_sync = $LipSync
+@onready var lip_sync = $"../../LipSync"
 @onready var anim_player = $"../../AnimationPlayer"
 
 func _ready():
@@ -114,10 +114,10 @@ func update_mouth_state(delta: float):
 		# 更新当前状态
 		current_state = target_state
 		last_state_change_time = Time.get_ticks_msec()
-	elif animation_tree and state_machine:
-		# 确保保持在当前状态
-		if state_machine.get_current_node() != current_state:
-			state_machine.travel(current_state)
+	#elif animation_tree and state_machine:
+		## 确保保持在当前状态
+		#if state_machine.get_current_node() != current_state:
+			#state_machine.travel(current_state)
 
 # 辅助函数：获取状态持续时间（毫秒）
 func get_state_duration():
