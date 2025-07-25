@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=3 uid="uid://c53ywbl2oiduu"]
+[gd_scene load_steps=218 format=3 uid="uid://c53ywbl2oiduu"]
 
 [ext_resource type="PackedScene" uid="uid://cgsg5o04bdp2b" path="res://droid/test2.vrm" id="1_plo1s"]
 [ext_resource type="Script" uid="uid://ckp6oxnovpy2k" path="res://script/vrm.gd" id="2_6m5pc"]
@@ -16,7 +16,6 @@
 [ext_resource type="Animation" uid="uid://cnw2o1yj3vjnw" path="res://animation/mixamo_com.res" id="11_lt7kc"]
 [ext_resource type="PackedScene" uid="uid://dh1qvruv8aguf" path="res://scene/audio_manger.tscn" id="11_m7mtf"]
 [ext_resource type="PackedScene" uid="uid://b3d1q4kr0mx2k" path="res://pose/pose_act_box.tscn" id="11_ptn6j"]
-[ext_resource type="PackedScene" uid="uid://cxn8qey78w8h2" path="res://vad.tscn" id="12_5wwrn"]
 [ext_resource type="Script" uid="uid://cbot8vlfj0fgi" path="res://script/animation_parser.gd" id="12_m7mtf"]
 
 [sub_resource type="Resource" id="Resource_am83u"]
@@ -11242,7 +11241,7 @@ collider_library = Array[ExtResource("3_aa17h")]([SubResource("Resource_vmiqj"),
 [node name="GeneralSkeleton" parent="." index="0"]
 motion_scale = 1.0
 modifier_callback_mode_process = 0
-bones/1/position = Vector3(0.00388483, 0.978364, -0.00717735)
+bones/1/position = Vector3(0.00250211, 0.977442, -0.00178045)
 bones/11/rotation = Quaternion(0.707107, 0, 0, 0.707107)
 bones/12/rotation = Quaternion(0.707107, 0, 0, 0.707107)
 bones/58/rotation = Quaternion(0, -0.707107, 0, 0.707107)
@@ -11275,7 +11274,7 @@ script = ExtResource("5_5am1q")
 _min_sound = 0.137
 
 [node name="Head" parent="GeneralSkeleton" index="4"]
-transform = Transform3D(0.96603, 0.0972137, 0.239449, -0.0150259, 0.946112, -0.323491, -0.257993, 0.308904, 0.915433, -0.000807735, 1.42875, -0.093137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00250214, 1.45563, -0.0300675)
 
 [node name="LookOffset" parent="GeneralSkeleton/Head" index="0"]
 unique_name_in_owner = false
@@ -11358,11 +11357,7 @@ mute_audio = false
 
 [node name="recorder" parent="." index="5" instance=ExtResource("11_m7mtf")]
 
-[node name="vad" parent="." index="6" instance=ExtResource("12_5wwrn")]
-human_status = ExtResource("3_5wwrn")
-threshold = 0.11
-
-[node name="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" parent="." index="6"]
 libraries = {
 &"": SubResource("AnimationLibrary_kmom0"),
 &"mix": SubResource("AnimationLibrary_ul4jo"),
@@ -11401,7 +11396,7 @@ parameters/blend_position = Vector2(-0.865176, -0.501468)
 
 [node name="emotion_timer" type="Timer" parent="AnimationPlayer" index="2"]
 
-[node name="Animation_parser" type="Node" parent="." index="8" node_paths=PackedStringArray("player")]
+[node name="Animation_parser" type="Node" parent="." index="7" node_paths=PackedStringArray("player")]
 script = ExtResource("12_m7mtf")
 player = NodePath("../AnimationPlayer")
 

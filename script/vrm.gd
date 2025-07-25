@@ -16,8 +16,15 @@ func _ready():
 	human_status.changed.connect(status_change.bind(human_status))
 	%GeneralSkeleton.pose_touch.connect(body_act)
 func body_act(bone_name,trans_name):
+#TODO 完善整个交互的逻辑
+	var msg={
+		"act":"碰触",
+		"bone":bone_name,
+		"name":trans_name,
+		"target":"assistant"
+	}
 	
-	recorder.send_body_act("碰触了"+trans_name)
+	recorder.send_body_act(JSON.stringify(msg))
 	print("碰触了"+trans_name)
 	pass
 	
