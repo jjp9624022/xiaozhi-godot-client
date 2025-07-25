@@ -10,6 +10,8 @@ func _init():
 	set_status(status.IDLE)
 
 func set_status(stat):
+#	避免重复调用
+	if stat==state:return
 	state=stat
 	#print("设置状态",stat)
 	emit_changed()

@@ -31,6 +31,7 @@ func _ready():
 	_ws_client.connection_closed.connect(_on_closed)
 	_ws_client.data_received.connect(_on_data)
 	_ws_client.connect_to_url(SERVER_URL)
+	
 func set_listening_lever(lever):
 	audio_effect.volume_db=lever
 
@@ -95,7 +96,7 @@ func send_handshake():
 			"format": "opus",
 			"sample_rate": 16000,
 			"channels": 1,
-			"frame_ms": AUDIO_FRAME_MS
+			"frame_duration": AUDIO_FRAME_MS
 		}
 	}
 	_send_json(msg)
@@ -127,18 +128,29 @@ func send_text(text):
 	"session_id": _session_id,
 	"type": "listen",
 	"state": "detect",
-	"text": text
+	"text": text,
+	"source": "text",
 }
 	if text and connect:
 		_send_json(msg)
+
+func send_body_act(text):
+	var msg={
+	"session_id": _session_id,
+	"type": "listen",
+	"state": "detect",
+	"text": text,
+	"source": "text"
+}
+	_send_json(msg)
+
 	
 
 func _send_json(data: Dictionary):
 	var str = JSON.stringify(data)
-	_ws_client.get_peer().put_packet(str.to_utf8_buffer())
+	_ws_client.send_text(str)
 
 func _handle_server_message(msg):
-	#print(msg)
 	match msg.get("type"):
 		"hello":
 			print("服务器已经建立链接")

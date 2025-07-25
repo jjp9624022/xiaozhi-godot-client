@@ -1,4 +1,4 @@
-[gd_scene load_steps=220 format=3 uid="uid://c53ywbl2oiduu"]
+[gd_scene load_steps=219 format=3 uid="uid://c53ywbl2oiduu"]
 
 [ext_resource type="PackedScene" uid="uid://cgsg5o04bdp2b" path="res://droid/test2.vrm" id="1_plo1s"]
 [ext_resource type="Script" uid="uid://ckp6oxnovpy2k" path="res://script/vrm.gd" id="2_6m5pc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://daf0lxu411jb8" path="res://addons/vrm/vrm_collider.gd" id="3_aa17h"]
 [ext_resource type="Script" uid="uid://caklap30c2pji" path="res://addons/vrm/vrm_collider_group.gd" id="4_xwq5b"]
 [ext_resource type="Script" uid="uid://cri07sm0wss2i" path="res://Face.gd" id="5_5am1q"]
+[ext_resource type="Script" uid="uid://cua7cidhpbyky" path="res://pose/skeleton_act.gd" id="7_72j8p"]
 [ext_resource type="Script" uid="uid://mkhr3opbxmme" path="res://pose/area_3d.gd" id="7_eprgh"]
 [ext_resource type="Script" uid="uid://o58r0s1sngk2" path="res://addons/godot-lip-sync/lip_sync.gd" id="8_aaem1"]
 [ext_resource type="Script" uid="uid://c1jw4uu7xccdr" path="res://pose/bone_control.gd" id="8_p0v82"]
@@ -14,6 +15,7 @@
 [ext_resource type="Animation" uid="uid://dun1kfd0src7j" path="res://animation/thinking.res" id="10_h2krj"]
 [ext_resource type="Animation" uid="uid://cnw2o1yj3vjnw" path="res://animation/mixamo_com.res" id="11_lt7kc"]
 [ext_resource type="PackedScene" uid="uid://dh1qvruv8aguf" path="res://scene/audio_manger.tscn" id="11_m7mtf"]
+[ext_resource type="PackedScene" uid="uid://b3d1q4kr0mx2k" path="res://pose/pose_act_box.tscn" id="11_ptn6j"]
 [ext_resource type="PackedScene" uid="uid://cxn8qey78w8h2" path="res://vad.tscn" id="12_5wwrn"]
 [ext_resource type="Script" uid="uid://cbot8vlfj0fgi" path="res://script/animation_parser.gd" id="12_m7mtf"]
 
@@ -851,24 +853,7 @@ center_node = NodePath("")
 [sub_resource type="SphereShape3D" id="SphereShape3D_m7mtf"]
 radius = 0.18
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_5wwrn"]
-radius = 0.07
-
-[sub_resource type="SphereMesh" id="SphereMesh_m7mtf"]
-radius = 0.1
-height = 0.2
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_5wwrn"]
-transparency = 1
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-disable_ambient_light = true
-disable_fog = true
-albedo_color = Color(0.45, 0.734167, 1, 0)
-disable_receive_shadows = true
-
-[sub_resource type="Resource" id="Resource_m7mtf"]
+[sub_resource type="Resource" id="Resource_5wwrn"]
 resource_name = "LeftUpperLeg"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -879,7 +864,7 @@ radius = 0.0771765
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_5wwrn"]
+[sub_resource type="Resource" id="Resource_p0v82"]
 resource_name = "LeftUpperLeg"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -890,7 +875,7 @@ radius = 0.0771765
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_p0v82"]
+[sub_resource type="Resource" id="Resource_72j8p"]
 resource_name = "LeftUpperLeg"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -901,11 +886,11 @@ radius = 0.0771765
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_72j8p"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_m7mtf"), SubResource("Resource_5wwrn"), SubResource("Resource_p0v82")])
-
 [sub_resource type="Resource" id="Resource_ptn6j"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_5wwrn"), SubResource("Resource_p0v82"), SubResource("Resource_72j8p")])
+
+[sub_resource type="Resource" id="Resource_4e0h3"]
 resource_name = "RightUpperLeg"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -916,7 +901,7 @@ radius = 0.0771765
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_4e0h3"]
+[sub_resource type="Resource" id="Resource_skbxp"]
 resource_name = "RightUpperLeg"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -927,7 +912,7 @@ radius = 0.0771765
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_skbxp"]
+[sub_resource type="Resource" id="Resource_krfi2"]
 resource_name = "RightUpperLeg"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -938,11 +923,11 @@ radius = 0.0771765
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_krfi2"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_ptn6j"), SubResource("Resource_4e0h3"), SubResource("Resource_skbxp")])
-
 [sub_resource type="Resource" id="Resource_gwwmn"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_4e0h3"), SubResource("Resource_skbxp"), SubResource("Resource_krfi2")])
+
+[sub_resource type="Resource" id="Resource_u1omy"]
 resource_name = "Head"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -953,11 +938,11 @@ radius = 0.100199
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_u1omy"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_gwwmn")])
-
 [sub_resource type="Resource" id="Resource_gt1ch"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_u1omy")])
+
+[sub_resource type="Resource" id="Resource_uwdou"]
 resource_name = "LeftUpperArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -968,7 +953,7 @@ radius = 0.0476398
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_uwdou"]
+[sub_resource type="Resource" id="Resource_i0r7m"]
 resource_name = "LeftUpperArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -979,7 +964,7 @@ radius = 0.0476398
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_i0r7m"]
+[sub_resource type="Resource" id="Resource_0f1na"]
 resource_name = "LeftUpperArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -990,11 +975,11 @@ radius = 0.0476398
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_0f1na"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_gt1ch"), SubResource("Resource_uwdou"), SubResource("Resource_i0r7m")])
-
 [sub_resource type="Resource" id="Resource_2wsh4"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_uwdou"), SubResource("Resource_i0r7m"), SubResource("Resource_0f1na")])
+
+[sub_resource type="Resource" id="Resource_equyv"]
 resource_name = "RightUpperArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1005,7 +990,7 @@ radius = 0.0476398
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_equyv"]
+[sub_resource type="Resource" id="Resource_5etg3"]
 resource_name = "RightUpperArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1016,7 +1001,7 @@ radius = 0.0476398
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_5etg3"]
+[sub_resource type="Resource" id="Resource_5ay0k"]
 resource_name = "RightUpperArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1027,11 +1012,11 @@ radius = 0.0476398
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_5ay0k"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_2wsh4"), SubResource("Resource_equyv"), SubResource("Resource_5etg3")])
-
 [sub_resource type="Resource" id="Resource_l23vv"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_equyv"), SubResource("Resource_5etg3"), SubResource("Resource_5ay0k")])
+
+[sub_resource type="Resource" id="Resource_l4urm"]
 resource_name = "LeftLowerArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1042,7 +1027,7 @@ radius = 0.0285839
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_l4urm"]
+[sub_resource type="Resource" id="Resource_fhh4e"]
 resource_name = "LeftLowerArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1053,7 +1038,7 @@ radius = 0.0333479
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_fhh4e"]
+[sub_resource type="Resource" id="Resource_j1uq6"]
 resource_name = "LeftLowerArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1064,7 +1049,7 @@ radius = 0.0285839
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_j1uq6"]
+[sub_resource type="Resource" id="Resource_nm78w"]
 resource_name = "LeftLowerArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1075,11 +1060,11 @@ radius = 0.0285839
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_nm78w"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_l23vv"), SubResource("Resource_l4urm"), SubResource("Resource_fhh4e"), SubResource("Resource_j1uq6")])
-
 [sub_resource type="Resource" id="Resource_j76y1"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_l4urm"), SubResource("Resource_fhh4e"), SubResource("Resource_j1uq6"), SubResource("Resource_nm78w")])
+
+[sub_resource type="Resource" id="Resource_68hxo"]
 resource_name = "RightLowerArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1090,7 +1075,7 @@ radius = 0.0285839
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_68hxo"]
+[sub_resource type="Resource" id="Resource_skc1x"]
 resource_name = "RightLowerArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1101,7 +1086,7 @@ radius = 0.0333479
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_skc1x"]
+[sub_resource type="Resource" id="Resource_6dqft"]
 resource_name = "RightLowerArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1112,7 +1097,7 @@ radius = 0.0285839
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_6dqft"]
+[sub_resource type="Resource" id="Resource_kniw2"]
 resource_name = "RightLowerArm"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1123,11 +1108,11 @@ radius = 0.0285839
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_kniw2"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_j76y1"), SubResource("Resource_68hxo"), SubResource("Resource_skc1x"), SubResource("Resource_6dqft")])
-
 [sub_resource type="Resource" id="Resource_vk8bt"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_68hxo"), SubResource("Resource_skc1x"), SubResource("Resource_6dqft"), SubResource("Resource_kniw2")])
+
+[sub_resource type="Resource" id="Resource_ti021"]
 resource_name = "LeftHand"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1138,11 +1123,11 @@ radius = 0.0285839
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_ti021"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_vk8bt")])
-
 [sub_resource type="Resource" id="Resource_ac1aa"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_ti021")])
+
+[sub_resource type="Resource" id="Resource_suchh"]
 resource_name = "RightHand"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1153,11 +1138,11 @@ radius = 0.0285839
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_suchh"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_ac1aa")])
-
 [sub_resource type="Resource" id="Resource_wlvsv"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_suchh")])
+
+[sub_resource type="Resource" id="Resource_16wo5"]
 resource_name = "UpperChest"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1168,7 +1153,7 @@ radius = 0.0952796
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_16wo5"]
+[sub_resource type="Resource" id="Resource_h30g4"]
 resource_name = "UpperChest"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1179,7 +1164,7 @@ radius = 0.0666957
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_h30g4"]
+[sub_resource type="Resource" id="Resource_djtlb"]
 resource_name = "UpperChest"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1190,11 +1175,11 @@ radius = 0.0666957
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_djtlb"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_wlvsv"), SubResource("Resource_16wo5"), SubResource("Resource_h30g4")])
-
 [sub_resource type="Resource" id="Resource_pg65u"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_16wo5"), SubResource("Resource_h30g4"), SubResource("Resource_djtlb")])
+
+[sub_resource type="Resource" id="Resource_v5qxb"]
 resource_name = "Spine"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1205,11 +1190,11 @@ radius = 0.114336
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_v5qxb"]
-script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_pg65u")])
-
 [sub_resource type="Resource" id="Resource_olm5g"]
+script = ExtResource("4_xwq5b")
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_v5qxb")])
+
+[sub_resource type="Resource" id="Resource_kgix2"]
 resource_name = "Neck"
 script = ExtResource("3_aa17h")
 node_path = NodePath("")
@@ -1220,9 +1205,9 @@ radius = 0.0476398
 is_capsule = false
 gizmo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="Resource" id="Resource_kgix2"]
+[sub_resource type="Resource" id="Resource_buqfb"]
 script = ExtResource("4_xwq5b")
-colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_olm5g")])
+colliders = Array[ExtResource("3_aa17h")]([SubResource("Resource_kgix2")])
 
 [sub_resource type="Environment" id="Environment_jgli2"]
 
@@ -11179,7 +11164,6 @@ transitions = ["Start", "neutral", SubResource("AnimationNodeStateMachineTransit
 graph_offset = Vector2(-431, -72)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2o4og"]
-graph_offset = Vector2(-529.835, 242.19)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_uxi0w")
 nodes/Animation/position = Vector2(260, 60)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_ak7oi")
@@ -11258,7 +11242,7 @@ collider_library = Array[ExtResource("3_aa17h")]([SubResource("Resource_vmiqj"),
 [node name="GeneralSkeleton" parent="." index="0"]
 motion_scale = 1.0
 modifier_callback_mode_process = 0
-bones/1/position = Vector3(-0.0128549, 0.976308, -0.0200096)
+bones/1/position = Vector3(0.00388483, 0.978364, -0.00717735)
 bones/11/rotation = Quaternion(0.707107, 0, 0, 0.707107)
 bones/12/rotation = Quaternion(0.707107, 0, 0, 0.707107)
 bones/58/rotation = Quaternion(0, -0.707107, 0, 0.707107)
@@ -11276,12 +11260,13 @@ bones/92/scale = Vector3(1, 0.999392, 0.999392)
 bones/95/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
 bones/96/rotation = Quaternion(-1.49012e-08, 0, 0, 1)
 bones/98/position = Vector3(0.0772439, -0.0467867, -0.0165873)
-bones/105/scale = Vector3(0.999999, 0.99999, 1.00001)
+bones/105/scale = Vector3(0.999999, 0.999988, 1.00001)
 bones/106/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/106/scale = Vector3(1, 0.999984, 1.00001)
+bones/106/scale = Vector3(1, 0.999985, 1.00001)
 bones/109/rotation = Quaternion(3.46224e-12, -0.00123918, 6.98493e-09, 0.999999)
 bones/116/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 bones/116/scale = Vector3(1, 0.999983, 1.00002)
+script = ExtResource("7_72j8p")
 
 [node name="Face" parent="GeneralSkeleton" index="1"]
 blend_shapes/Fcl_EYE_Close_L = -0.065
@@ -11290,23 +11275,23 @@ script = ExtResource("5_5am1q")
 _min_sound = 0.137
 
 [node name="Head" parent="GeneralSkeleton" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0128549, 1.4545, -0.0482966)
+transform = Transform3D(0.96603, 0.0972137, 0.239449, -0.0150259, 0.946112, -0.323491, -0.257993, 0.308904, 0.915433, -0.000807735, 1.42875, -0.093137)
 
 [node name="LookOffset" parent="GeneralSkeleton/Head" index="0"]
 unique_name_in_owner = false
 transform = Transform3D(1, 3.72529e-09, 0, 3.72529e-09, 1, 0, -2.98023e-08, -2.98023e-08, 1, -0.0211616, -0.0113667, 0.135272)
 
-[node name="Area3D" type="Area3D" parent="GeneralSkeleton/Head" index="1"]
+[node name="Head" type="Area3D" parent="GeneralSkeleton/Head" index="1"]
 script = ExtResource("7_eprgh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GeneralSkeleton/Head/Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GeneralSkeleton/Head/Head" index="0"]
 shape = SubResource("SphereShape3D_m7mtf")
 
-[node name="Marker3D" type="Marker3D" parent="GeneralSkeleton/Head/Area3D" index="1"]
+[node name="Marker3D" type="Marker3D" parent="GeneralSkeleton/Head/Head" index="1"]
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="GeneralSkeleton" index="5"]
 influence = 0.705
-target_node = NodePath("../Head/Area3D/Marker3D")
+target_node = NodePath("../Head/Head/Marker3D")
 bone_name = "Head"
 bone = 10
 duration = 0.373
@@ -11317,36 +11302,46 @@ primary_damp_threshold = 0.75
 secondary_limit_angle = 1.07006
 secondary_damp_threshold = 0.77
 
-[node name="GodotIK" type="GodotIK" parent="GeneralSkeleton" index="6" node_paths=PackedStringArray("camera_3d", "mesh_instance_3d")]
+[node name="LeftHand" type="GodotIK" parent="GeneralSkeleton" index="6" node_paths=PackedStringArray("camera_3d", "pose_area")]
+iteration_count = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14111, 0.896336, 0)
+influence = 0.731
+script = ExtResource("8_p0v82")
+camera_3d = NodePath("../../Camera3D")
+bone_id = 59
+pose_area = NodePath("leftHand/pose_actor")
+
+[node name="leftHand" type="GodotIKEffector" parent="GeneralSkeleton/LeftHand" index="0"]
+bone_name = "LeftHand"
+bone_idx = 59
+chain_length = 3
+transform_mode = 1
+transform = Transform3D(1, 0, 0, 0, -0.155021, -0.987911, 0, 0.987911, -0.155021, 0.0292752, -0.0252193, -0.00395737)
+
+[node name="pose_actor" parent="GeneralSkeleton/LeftHand/leftHand" index="0" instance=ExtResource("11_ptn6j")]
+
+[node name="RightHand" type="GodotIK" parent="GeneralSkeleton" index="7" node_paths=PackedStringArray("camera_3d", "pose_area")]
 iteration_count = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184182, 0.896336, 0)
 influence = 0.731
 script = ExtResource("8_p0v82")
 camera_3d = NodePath("../../Camera3D")
 bone_id = 82
-mesh_instance_3d = NodePath("rightHand/Area3D/MeshInstance3D")
+pose_area = NodePath("rightHand/pose_actor")
 
-[node name="rightHand" type="GodotIKEffector" parent="GeneralSkeleton/GodotIK" index="0"]
+[node name="rightHand" type="GodotIKEffector" parent="GeneralSkeleton/RightHand" index="0"]
 bone_name = "RightHand"
 bone_idx = 82
 chain_length = 3
 transform_mode = 1
 transform = Transform3D(1, 0, 0, 0, -0.155021, -0.987911, 0, 0.987911, -0.155021, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="GeneralSkeleton/GodotIK/rightHand" index="0"]
-input_capture_on_drag = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GeneralSkeleton/GodotIK/rightHand/Area3D" index="0"]
-shape = SubResource("SphereShape3D_5wwrn")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="GeneralSkeleton/GodotIK/rightHand/Area3D" index="1"]
-mesh = SubResource("SphereMesh_m7mtf")
-surface_material_override/0 = SubResource("ORMMaterial3D_5wwrn")
+[node name="pose_actor" parent="GeneralSkeleton/RightHand/rightHand" index="0" instance=ExtResource("11_ptn6j")]
 
 [node name="secondary" parent="." index="2"]
 update_secondary_fixed = true
-collider_groups = Array[ExtResource("4_xwq5b")]([SubResource("Resource_72j8p"), SubResource("Resource_krfi2"), SubResource("Resource_u1omy"), SubResource("Resource_0f1na"), SubResource("Resource_5ay0k"), SubResource("Resource_nm78w"), SubResource("Resource_kniw2"), SubResource("Resource_ti021"), SubResource("Resource_suchh"), SubResource("Resource_djtlb"), SubResource("Resource_v5qxb"), SubResource("Resource_kgix2")])
-collider_library = Array[ExtResource("3_aa17h")]([SubResource("Resource_m7mtf"), SubResource("Resource_5wwrn"), SubResource("Resource_p0v82"), SubResource("Resource_ptn6j"), SubResource("Resource_4e0h3"), SubResource("Resource_skbxp"), SubResource("Resource_gwwmn"), SubResource("Resource_gt1ch"), SubResource("Resource_uwdou"), SubResource("Resource_i0r7m"), SubResource("Resource_2wsh4"), SubResource("Resource_equyv"), SubResource("Resource_5etg3"), SubResource("Resource_l23vv"), SubResource("Resource_l4urm"), SubResource("Resource_fhh4e"), SubResource("Resource_j1uq6"), SubResource("Resource_j76y1"), SubResource("Resource_68hxo"), SubResource("Resource_skc1x"), SubResource("Resource_6dqft"), SubResource("Resource_vk8bt"), SubResource("Resource_ac1aa"), SubResource("Resource_wlvsv"), SubResource("Resource_16wo5"), SubResource("Resource_h30g4"), SubResource("Resource_pg65u"), SubResource("Resource_olm5g")])
+collider_groups = Array[ExtResource("4_xwq5b")]([SubResource("Resource_ptn6j"), SubResource("Resource_gwwmn"), SubResource("Resource_gt1ch"), SubResource("Resource_2wsh4"), SubResource("Resource_l23vv"), SubResource("Resource_j76y1"), SubResource("Resource_vk8bt"), SubResource("Resource_ac1aa"), SubResource("Resource_wlvsv"), SubResource("Resource_pg65u"), SubResource("Resource_olm5g"), SubResource("Resource_buqfb")])
+collider_library = Array[ExtResource("3_aa17h")]([SubResource("Resource_5wwrn"), SubResource("Resource_p0v82"), SubResource("Resource_72j8p"), SubResource("Resource_4e0h3"), SubResource("Resource_skbxp"), SubResource("Resource_krfi2"), SubResource("Resource_u1omy"), SubResource("Resource_uwdou"), SubResource("Resource_i0r7m"), SubResource("Resource_0f1na"), SubResource("Resource_equyv"), SubResource("Resource_5etg3"), SubResource("Resource_5ay0k"), SubResource("Resource_l4urm"), SubResource("Resource_fhh4e"), SubResource("Resource_j1uq6"), SubResource("Resource_nm78w"), SubResource("Resource_68hxo"), SubResource("Resource_skc1x"), SubResource("Resource_6dqft"), SubResource("Resource_kniw2"), SubResource("Resource_ti021"), SubResource("Resource_suchh"), SubResource("Resource_16wo5"), SubResource("Resource_h30g4"), SubResource("Resource_djtlb"), SubResource("Resource_v5qxb"), SubResource("Resource_kgix2")])
 
 [node name="Camera3D" type="Camera3D" parent="." index="3"]
 unique_name_in_owner = true
@@ -11385,7 +11380,7 @@ tree_root = SubResource("AnimationNodeStateMachine_bt78u")
 advance_expression_base_node = NodePath("../../GeneralSkeleton/Face")
 anim_player = NodePath("..")
 parameters/conditions/is_kissing = false
-parameters/BlendTree/Blend2/blend_amount = 0.3
+parameters/BlendTree/Blend2/blend_amount = 0.08
 "parameters/BlendTree/Blend2 2/blend_amount" = 1.0
 "parameters/BlendTree/Blend2 3/blend_amount" = 0.6
 parameters/BlendTree/BlendSpace2D/blend_position = 0.5
@@ -11410,8 +11405,5 @@ parameters/blend_position = Vector2(-0.865176, -0.501468)
 script = ExtResource("12_m7mtf")
 player = NodePath("../AnimationPlayer")
 
-[connection signal="input_event" from="GeneralSkeleton/Head/Area3D" to="GeneralSkeleton/Head/Area3D" method="_on_input_event"]
-[connection signal="input_event" from="GeneralSkeleton/GodotIK/rightHand/Area3D" to="GeneralSkeleton/GodotIK" method="_on_area_3d_input_event"]
-[connection signal="mouse_entered" from="GeneralSkeleton/GodotIK/rightHand/Area3D" to="GeneralSkeleton/GodotIK" method="_on_area_3d_mouse_entered"]
-[connection signal="mouse_exited" from="GeneralSkeleton/GodotIK/rightHand/Area3D" to="GeneralSkeleton/GodotIK" method="_on_area_3d_mouse_exited"]
+[connection signal="input_event" from="GeneralSkeleton/Head/Head" to="GeneralSkeleton/Head/Head" method="_on_input_event"]
 [connection signal="timeout" from="AnimationPlayer/emotion_timer" to="AnimationPlayer" method="_on_emotion_timer_timeout"]

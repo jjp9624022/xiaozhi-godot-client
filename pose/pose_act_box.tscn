@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3d1q4kr0mx2k"]
+
+[ext_resource type="Script" uid="uid://dnqhrpenqjx7t" path="res://pose/pose_act_box.gd" id="1_01klf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5wwrn"]
+radius = 0.07
+
+[sub_resource type="SphereMesh" id="SphereMesh_m7mtf"]
+resource_local_to_scene = true
+radius = 0.07
+height = 0.15
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_5wwrn"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.45, 0.734167, 1, 0)
+disable_receive_shadows = true
+
+[node name="pose_actor" type="Area3D"]
+input_capture_on_drag = true
+script = ExtResource("1_01klf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_5wwrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_m7mtf")
+surface_material_override/0 = SubResource("ORMMaterial3D_5wwrn")

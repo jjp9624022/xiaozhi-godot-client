@@ -11,7 +11,6 @@ buffer_length = 0.2
 
 [node name="recorder" type="Node"]
 script = ExtResource("1_ysjw6")
-power = 100
 
 [node name="Mic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_ul4jo")

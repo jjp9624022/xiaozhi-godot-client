@@ -48,11 +48,11 @@ func _on_recorder_is_listening(speek_status) -> void:
 	if speek_status:
 		
 		$eyeAnimation.active=false
-		$AnimationTree["parameters/BlendTree/Blend2/blend_amount"]=0.2
+		$AnimationTree["parameters/BlendTree/Blend2/blend_amount"]=0.05
 
 	else:
 		$eyeAnimation.active=true
-		$AnimationTree["parameters/BlendTree/Blend2/blend_amount"]=0.5
+		$AnimationTree["parameters/BlendTree/Blend2/blend_amount"]=0.1
 func _on_emotion_res(motion_name):
 	if motion_dic.get(motion_name):
 		$AnimationTree["parameters/BlendTree/emotion/playback"].travel(motion_dic[motion_name])

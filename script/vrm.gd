@@ -12,9 +12,15 @@ var can_move=true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_TRANSPARENT, true, 0)
-
+#绑定姿态交互事件
 	human_status.changed.connect(status_change.bind(human_status))
-
+	%GeneralSkeleton.pose_touch.connect(body_act)
+func body_act(bone_name,trans_name):
+	
+	recorder.send_body_act("碰触了"+trans_name)
+	print("碰触了"+trans_name)
+	pass
+	
 func status_change(sta:HumanState):
 	#print("调用成功")
 	if sta.state==HumanState.status.IDLE:
@@ -35,7 +41,6 @@ func _receive_data(draging):
 		can_move=false
 	else:
 		can_move=true
-		 # Replace with function body.
 	
 func _input(event):
 	if event is InputEventMouseMotion and can_move:
