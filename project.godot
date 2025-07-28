@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [audio]
 
+buses/default_bus_layout=""
 driver/enable_input=true
 buses/channel_disable_time=60.0
 

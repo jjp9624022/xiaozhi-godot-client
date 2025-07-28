@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh1qvruv8aguf"]
 
-[ext_resource type="Script" uid="uid://c131m5hcguptv" path="res://recorder2.gd" id="1_ysjw6"]
+[ext_resource type="Script" uid="uid://c131m5hcguptv" path="res://audio/recorder2.gd" id="1_ysjw6"]
 [ext_resource type="Script" uid="uid://c00pomayh0p85" path="res://addons/nodewebsockets/websocket_client.gd" id="2_kc08h"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_ul4jo"]

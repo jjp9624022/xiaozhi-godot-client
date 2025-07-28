@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqwc6xki732x6"]
 
-[ext_resource type="Script" uid="uid://b3kqphgahdby3" path="res://face_reg.gd" id="1_uad11"]
+[ext_resource type="Script" uid="uid://b3kqphgahdby3" path="res://face/face_reg.gd" id="1_uad11"]
 [ext_resource type="Script" uid="uid://bl1q7c0hirx46" path="res://script/webdownloader.gd" id="2_ildyk"]
 
 [node name="face_reg" type="Node2D"]

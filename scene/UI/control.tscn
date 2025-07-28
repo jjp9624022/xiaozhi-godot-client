@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cdfe2fhlnoq2x"]
 
-[ext_resource type="Script" uid="uid://bmdkmag5emllh" path="res://control.gd" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://bmdkmag5emllh" path="res://scene/UI/control.gd" id="1_0fbet"]
 [ext_resource type="Script" uid="uid://d2okthktfxqr1" path="res://script/label.gd" id="2_62e2m"]
 [ext_resource type="Script" uid="uid://beofvtt5vx8f0" path="res://utils/human_state.gd" id="2_ee4bf"]
 [ext_resource type="Script" uid="uid://mc8g6ocisq1a" path="res://script/tts_display.gd" id="2_qtu10"]
@@ -18,9 +18,9 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -326.0
-offset_right = 326.0
-offset_bottom = 786.0
+offset_left = -160.0
+offset_right = 160.0
+offset_bottom = 500.0
 grow_horizontal = 2
 script = ExtResource("1_0fbet")
 human_status = SubResource("Resource_buqfb")
@@ -75,12 +75,16 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "发送"
 
-[node name="FaceCheckButton" type="CheckButton" parent="BoxContainer"]
+[node name="SettingButton" type="Button" parent="BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
-text = "启用人脸识别"
+size_flags_horizontal = 8
+text = "设置"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="button_down" from="BoxContainer/SendAudioButton" to="." method="_on_speek_button_down"]
 [connection signal="button_up" from="BoxContainer/SendAudioButton" to="." method="_on_speek_button_up"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer/sendTextButton" to="." method="_on_send_text_button_pressed"]
-[connection signal="button_down" from="BoxContainer/FaceCheckButton" to="." method="_on_face_check_button_button_down"]
-[connection signal="button_up" from="BoxContainer/FaceCheckButton" to="." method="_on_face_check_button_button_up"]
+[connection signal="pressed" from="BoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]

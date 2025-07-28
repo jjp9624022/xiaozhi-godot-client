@@ -1,0 +1,164 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0et7lk5ct1wx"]
+
+[ext_resource type="Theme" uid="uid://crhkvjq1ki8l7" path="res://theme/ui_theme.tres" id="1_b84vh"]
+[ext_resource type="Script" uid="uid://bm076q2378vhr" path="res://scene/UI/setting_ui.gd" id="1_eaejp"]
+[ext_resource type="Texture2D" uid="uid://dj8b5208dnek5" path="res://scene/UI/存储.svg" id="3_cyr2v"]
+
+[sub_resource type="Theme" id="Theme_eaejp"]
+default_font_size = 10
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_eaejp")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -63.0
+offset_right = 114.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("1_b84vh")
+theme_override_constants/margin_left = 17
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 17
+theme_override_constants/margin_bottom = 17
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_eaejp")
+theme_override_colors/font_color = Color(1, 0.695896, 0.879201, 1)
+text = "test"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "服务器地址"
+horizontal_alignment = 1
+
+[node name="ServerUrlEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "人脸识别地址"
+horizontal_alignment = 1
+
+[node name="FaceServerUrlEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+
+[node name="FaceCheckButton" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "人脸识别"
+
+[node name="TestConnectionButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "测试链接"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "主音量"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "tts音量"
+horizontal_alignment = 1
+
+[node name="VoiceSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+text = "录音音量"
+horizontal_alignment = 1
+
+[node name="MicSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="reset" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "重置"
+
+[node name="save" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+text = "保存"
+icon = ExtResource("3_cyr2v")
+expand_icon = true
+
+[node name="close" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "关闭"
+
+[node name="SaveIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(72, 72)
+offset_left = 288.0
+offset_top = 540.0
+offset_right = 360.0
+offset_bottom = 612.0
+pivot_offset = Vector2(36, 36)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_cyr2v")
+expand_mode = 3
+
+[connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/FaceCheckButton" to="." method="_on_face_check_button_button_down"]
+[connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/FaceCheckButton" to="." method="_on_face_check_button_button_up"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/reset" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/save" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/close" to="." method="_on_close_pressed"]

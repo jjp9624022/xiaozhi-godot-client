@@ -1,13 +1,14 @@
 class_name XiaozhiConect
 extends Node
 
-const SERVER_URL = "ws://192.168.1.1:8000/xiaozhi/v1"
+@onready var settings:GameSettings=load("user://settings.tres")
+
 const AUDIO_FRAME_MS = 60  # 每帧音频时长（毫秒）
 signal is_talking
 signal emotion_state
 @onready var _ws_client = $WebSocketClient
 @onready var player=$AudioStreamPlayer2
-
+var SERVER_URL
 var _is_capturing := false
 var _session_id := get_instance_id()
 var _encoder := Opus.new()
@@ -16,10 +17,9 @@ var capturer:AudioEffectCapture
 var audio_input_rate:=AudioServer.get_input_mix_rate()
 var audio_out_rate:=AudioServer.get_mix_rate()
 var audio_effect
-var connect=false
 func _ready():
 	# 初始化音频系统
-	
+	SERVER_URL = settings.server_url
 	_encoder.update_mix_rate(audio_input_rate,audio_out_rate)
 	var idx = AudioServer.get_bus_index("Record")
 	#print(AudioServer.get_input_mix_rate(),"输入帧率")
@@ -66,12 +66,12 @@ func _process_audio():
 # WebSocket 事件处理
 func _on_connected(socket,protocol):
 	print("Connected to server")
-	connect=true
+	settings.set_server_state(true)
 	send_handshake()
 
 func _on_closed(reson):
 	_is_capturing = false
-	connect=false
+	settings.set_server_state(false)
 	if $Timer_for_web.is_stopped():
 		print("Connection closed,5秒重启")
 		$Timer_for_web.start(5)
