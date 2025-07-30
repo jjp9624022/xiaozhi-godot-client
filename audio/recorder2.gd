@@ -1,10 +1,8 @@
 class_name XiaozhiConect
 extends Node
-
 @onready var settings:GameSettings=load("user://settings.tres")
 
 const AUDIO_FRAME_MS = 60  # 每帧音频时长（毫秒）
-signal is_talking
 signal emotion_state
 @onready var _ws_client = $WebSocketClient
 @onready var player=$AudioStreamPlayer2
@@ -22,7 +20,6 @@ func _ready():
 	SERVER_URL = settings.server_url
 	_encoder.update_mix_rate(audio_input_rate,audio_out_rate)
 	var idx = AudioServer.get_bus_index("Record")
-	#print(AudioServer.get_input_mix_rate(),"输入帧率")
 	audio_effect = AudioServer.get_bus_effect(idx, 0)
 	capturer = AudioServer.get_bus_effect(idx, 1)
 			
@@ -176,11 +173,7 @@ func _on_mic_finished() -> void:
 	print("意外中止，重新播放")
 	#$Mic.playing=true
 	$Mic.playing=false
-	#var time=Timer.new()
-	#time.timeout.connect(fuckMic)
-	#add_child(time)
-	#time.start(2)
-	pass # Replace with function body.
+
 func fuckMic():
 	print("mic重新启用")
 	$Mic.playing=true

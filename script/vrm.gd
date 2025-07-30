@@ -4,7 +4,9 @@ signal tts
 @export var human_status:HumanState
 @onready var eye_animation_tree=$AnimationPlayer/eyeAnimation
 @onready var camera = $Camera3D
-@onready var head=$GeneralSkeleton/Head
+@onready var head=%GeneralSkeleton/Head
+@onready var face_color=%GeneralSkeleton/Face['surface_material_override/3']
+
 var left_eye
 var right_eye
 var can_move=true
@@ -15,6 +17,7 @@ func _ready():
 #绑定姿态交互事件
 	human_status.changed.connect(status_change.bind(human_status))
 	%GeneralSkeleton.pose_touch.connect(body_act)
+	#head.act.connect(_on_face_act.bind(head))
 func body_act(bone_name,trans_name):
 #TODO 完善整个交互的逻辑
 	var msg={
@@ -25,7 +28,8 @@ func body_act(bone_name,trans_name):
 	}
 	
 	recorder.send_body_act(JSON.stringify(msg))
-	print("碰触了"+trans_name)
+	_on_face_act()
+	#print("碰触了"+trans_name)
 	pass
 	
 func status_change(sta:HumanState):
@@ -66,3 +70,8 @@ func _process(delta):
 	var direction = (pos_2d-mouse_pos).normalized()
 	eye_animation_tree["parameters/blend_position"]=direction
 	$AnimationPlayer/AnimationTree["parameters/BlendTree/BlendSpace2D/blend_position"]=direction
+#脸红模式	
+func _on_face_act():
+	var tween=create_tween()
+	tween.tween_property(face_color,"shader_parameter/mix_rate",0.6,1)
+	tween.tween_property(face_color,"shader_parameter/mix_rate",0,1)

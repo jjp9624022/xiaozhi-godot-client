@@ -13,11 +13,12 @@ config_version=5
 config/name="xiaozhi-droid"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
+run/low_processor_mode=true
 config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout=""
+buses/default_bus_layout="uid://gcf1so3c6lah"
 driver/enable_input=true
 buses/channel_disable_time=60.0
 
@@ -25,10 +26,6 @@ buses/channel_disable_time=60.0
 
 settings/physics_interpolation/enable_warnings=false
 file_logging/enable_file_logging.pc=false
-
-[debug_draw_3d]
-
-settings/addon_root_folder="res://addons/debug_draw_3d"
 
 [display]
 
@@ -90,11 +87,6 @@ drag={
 [input_devices]
 
 sensors/enable_gyroscope=true
-
-[plugins]
-
-ai_assistant_hub/base_url="http://127.0.0.1:11434"
-ai_assistant_hub/llm_api="ollama_api"
 
 [rendering]
 

@@ -1,5 +1,6 @@
 extends AnimationPlayer
-
+@export var human_status:HumanState
+@export var xiaozhi:XiaozhiConect
 @onready var motion_dic={
 	"sad":"sad",
 	"relaxed":"relaxed",
@@ -35,31 +36,21 @@ var emoji_map = {
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	xiaozhi.emotion_state.connect(_on_emotion_res)
+	human_status.changed.connect(_on_recorder_is_listening.bind(human_status))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-
-func _on_recorder_is_listening(speek_status) -> void:
-	if speek_status:
-		
+func _on_recorder_is_listening(speek_status:HumanState) -> void:
+	if speek_status.state==HumanState.status.LESTENING:
+		#print("调用次数")
 		$eyeAnimation.active=false
 		$AnimationTree["parameters/BlendTree/Blend2/blend_amount"]=0.05
 
 	else:
 		$eyeAnimation.active=true
 		$AnimationTree["parameters/BlendTree/Blend2/blend_amount"]=0.1
+	pass
 func _on_emotion_res(motion_name):
 	if motion_dic.get(motion_name):
 		$AnimationTree["parameters/BlendTree/emotion/playback"].travel(motion_dic[motion_name])
 		#$AnimationTree.set("parameters/BlendTree/emotion/conditions/%s"%motion_dic[motion_name],true)
-		$emotion_timer.start(3)
-
-
-func _on_emotion_timer_timeout() -> void:
-	$AnimationTree["parameters/BlendTree/emotion/playback"].travel("RESET")
-	pass # Replace with function body.
+		#$emotion_timer.start(3)

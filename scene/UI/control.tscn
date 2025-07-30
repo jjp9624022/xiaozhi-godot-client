@@ -20,7 +20,6 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -160.0
 offset_right = 160.0
-offset_bottom = 500.0
 grow_horizontal = 2
 script = ExtResource("1_0fbet")
 human_status = SubResource("Resource_buqfb")
@@ -75,16 +74,22 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "发送"
 
-[node name="SettingButton" type="Button" parent="BoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="SettingButton" type="Button" parent="BoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "设置"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="exitButton" type="Button" parent="BoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "退出"
 
 [connection signal="button_down" from="BoxContainer/SendAudioButton" to="." method="_on_speek_button_down"]
 [connection signal="button_up" from="BoxContainer/SendAudioButton" to="." method="_on_speek_button_up"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer/sendTextButton" to="." method="_on_send_text_button_pressed"]
-[connection signal="pressed" from="BoxContainer/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer2/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="BoxContainer/HBoxContainer2/exitButton" to="." method="_on_exit_button_pressed"]

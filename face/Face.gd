@@ -1,4 +1,4 @@
-extends Node
+extends MeshInstance3D
 
 # 嘴型权重属性
 @export_range(0.0, 1.0) var _min_sound = 0.12
@@ -7,6 +7,7 @@ extends Node
 # 动画树状态机
 @onready var animation_tree: AnimationTree = $"../../AnimationPlayer/AnimationTree"
 @onready var state_machine = animation_tree["parameters/BlendTree/speek/playback"] if animation_tree else null
+@onready var head:HeadArea = $"../Head/Head"
 
 # 元音到状态名称的映射
 var _vowel_mapping: Dictionary = {
@@ -39,6 +40,7 @@ var last_state_change_time = 0.0
 @onready var anim_player = $"../../AnimationPlayer"
 
 func _ready():
+	
 	# 确保动画树已初始化
 	if animation_tree:
 		animation_tree.active = true
@@ -47,6 +49,7 @@ func _ready():
 
 func _physics_process(delta):
 	update_mouth_state(delta)
+	
 
 #func _on_timer_timeout():
 	#anim_player.play("blink")

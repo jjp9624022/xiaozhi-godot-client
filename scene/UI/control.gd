@@ -34,3 +34,8 @@ func _on_setting_button_pressed() -> void:
 		remove_child(settings_ui)
 		settings_ui=null
 	#get_node() # Replace with function body.
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
+	pass # Replace with function body.
